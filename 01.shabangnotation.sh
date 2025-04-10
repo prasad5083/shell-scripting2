@@ -16,3 +16,7 @@ echo "name of the script is $0"
 echo "name the teacher is $1"
 echo "name of the institute is $2"
 echo "name of the batch is $3"
+echo $*
+echo $$
+echo $#
+echo $?
