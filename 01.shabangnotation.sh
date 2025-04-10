@@ -13,3 +13,6 @@ todays_date=$(date +%F)
 echo "todays date is ${todays_date}"
 echo $0
 echo "name of the script is $0"
+echo "name the teacher is $1"
+echo "name of the institute is $2"
+echo "name of the batch is $3"
