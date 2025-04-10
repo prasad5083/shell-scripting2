@@ -9,5 +9,4 @@ a=10
 b=20
 c=30
 echo value of the a i $a
-echo value of the b is $a
-echo value of the c is $a
+
