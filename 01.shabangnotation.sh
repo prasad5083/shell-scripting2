@@ -9,6 +9,6 @@ a=10
 b=20
 c=30
 echo value of the a is $a
-todays_date=(date +%F)
+todays_date=$(date +%F)
 echo "todays date is ${todays_date}"
 
