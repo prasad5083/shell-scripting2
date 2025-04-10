@@ -10,5 +10,5 @@ b=20
 c=30
 echo value of the a is $a
 date=date +%F
-echo todays date is ${date}
+echo "todays date is ${date}"
 
