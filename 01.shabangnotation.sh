@@ -2,4 +2,4 @@
 
 echo line1
 echo line2
-echo line3\nline4\tline4
+echo line3\nLine4\tLine4
