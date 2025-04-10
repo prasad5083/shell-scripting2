@@ -20,3 +20,11 @@ echo $*
 echo $$
 echo $#
 echo $?
+
+sample(){
+echo "this is the sample function"
+echo "i am creating the sample function"
+echo " sample function is created"    
+}
+# declearing the sample function
+smple()
