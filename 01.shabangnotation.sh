@@ -27,4 +27,5 @@ echo "i am creating the sample function"
 echo " sample function is created"    
 }
 # declearing the sample function
-smple()
+
+smple
