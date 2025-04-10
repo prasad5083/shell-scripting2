@@ -11,4 +11,5 @@ c=30
 echo value of the a is $a
 todays_date=$(date +%F)
 echo "todays date is ${todays_date}"
-
+echo $0
+echo "name of the script is $0"
