@@ -1,7 +1,7 @@
 action=$1
 case $action in 
     start)
-    echo " rabbit MQ started"
+    echo -e "\e[32m rabbit MQ started \e[0m"
     ;;
     stop)
     echo "rabbit MQ stopped"
