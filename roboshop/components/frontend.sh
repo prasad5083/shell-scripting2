@@ -1,5 +1,6 @@
 #!/bin/bash
 
+component=frontend
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then
  echo -e "\e[31m this script is only execurted by only previlaged user \e[0m"
@@ -7,7 +8,7 @@ if [ $ID -ne 0 ] ; then
 fi 
 echo " install nginx : "
 
-yum install nginx -y
+yum install nginx -y &>> "/tmp/${component}.log"
 
 # yum install nginx -y
 # systemctl enable nginx
