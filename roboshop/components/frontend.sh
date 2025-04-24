@@ -8,7 +8,7 @@ if [ $ID -ne 0 ] ; then
 fi 
 stat() {
 if [ $1 -eq 0 ] ; then
- echo -e " \e[31m success \e[0m"
+ echo -e "\e[31m success \e[0m"
 else
  echo -e "\e[31m failure \e[0m"
  exit 2
@@ -18,29 +18,29 @@ logfile="/tmp/${component}.log"
 
 echo " install nginx : "
 
-yum install nginx -y &>> logfile
+yum install nginx -y &>> $logfile
 
 stat $? 
 
 echo "downoding the front end component"
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
+curl -s -L -o /tmp/${component}.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
 stat $?
 
 echo -n -e "  performing clean up "
 
 cd /usr/share/nginx/html  
-rm -rf * &>> logfile
+rm -rf * &>> $logfile
 stat $?
 
 echo -n " extracting ${component} component : "
-unzip /tmp/${component}.zip &>> logfile
+unzip /tmp/${component}.zip &>> $logfile
 mv $component-main/* .
 mv static/* . 
 rm -rf ${component}-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
-echo " starting the ${component} companent "
+echo " starting the ${component} service "
 systemctl enable nginx
 systemctl start nginx
 stat $?
