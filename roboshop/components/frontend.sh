@@ -16,6 +16,15 @@ else
  echo -e "\e[31m failure \e[0m"
 fi  
 
+echo "downoding the front end component"
+curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
+
+if [ $? -eq 0 ] ; then
+ echo -e " \e[31m success \e[0m"
+else
+ echo -e "\e[31m failure \e[0m"
+fi
+
 # yum install nginx -y
 # systemctl enable nginx
 # systemctl start nginx
@@ -24,7 +33,6 @@ fi
 
 #Let's download the HTDOCS content and deploy it under the Nginx path.
 
-# curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
 #Deploy in Nginx Default Location.
 
