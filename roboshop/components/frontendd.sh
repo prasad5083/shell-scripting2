@@ -56,9 +56,9 @@ systemctl enable nginx &>> $logfile
 systemctl restart nginx &>> $logfile
 stat $?
 
-echo "Configuring firewall:"
-firewall-cmd --add-port=80/tcp --permanent &>> $logfile
-firewall-cmd --reload &>> $logfile
-stat $?
+#echo "Configuring firewall:"
+#firewall-cmd --add-port=80/tcp --permanent &>> $logfile
+#firewall-cmd --reload &>> $logfile
+#stat $?
 
 echo -e "\n\e[32mFrontend setup complete! Visit http://<EC2-IP> to verify.\e[0m"
