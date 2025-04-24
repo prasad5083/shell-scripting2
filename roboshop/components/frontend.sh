@@ -25,6 +25,23 @@ else
  echo -e "\e[31m failure \e[0m"
 fi
 
+echo -n " \e[31m performing clean up \e[0m"
+
+cd /usr/share/nginx/html  
+rm -rf * &>> "/tmp/${component}.log"
+
+if [ $? -eq 0 ] ; then
+ echo -e " \e[31m success \e[0m"
+else
+ echo -e "\e[31m failure \e[0m"
+fi
+# unzip /tmp/frontend.zip
+# mv frontend-main/* .
+# mv static/* .
+# rm -rf frontend-main README.md
+# mv localhost.conf /etc/nginx/default.d/roboshop.conf
+
+
 # yum install nginx -y
 # systemctl enable nginx
 # systemctl start nginx
@@ -36,13 +53,7 @@ fi
 
 #Deploy in Nginx Default Location.
 
-# cd /usr/share/nginx/html
-# rm -rf *
-# unzip /tmp/frontend.zip
-# mv frontend-main/* .
-# mv static/* .
-# rm -rf frontend-main README.md
-# mv localhost.conf /etc/nginx/default.d/roboshop.conf
+
 
 
 
