@@ -10,6 +10,12 @@ echo " install nginx : "
 
 yum install nginx -y &>> "/tmp/${component}.log"
 
+if [ $? -eq 0 ] ; then
+ echo -e " \e[31m success \e[0m
+else
+ echo -e "\e[31m failure \e[0m"
+fi  
+
 # yum install nginx -y
 # systemctl enable nginx
 # systemctl start nginx
