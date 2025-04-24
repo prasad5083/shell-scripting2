@@ -40,13 +40,12 @@ rm -rf ${component}-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
-#echo " configuring firewall "
-#firewall-cmd --add-port=22/tcp --permanent &>> $logfile
-#firewall-cmd --reload &>> $logfile
-#stat $?
-
+echo " configuring firewall "
+firewall-cmd --add-port=80/tcp --permanent &>> $logfile
+firewall-cmd --reload &>> $logfile
+stat $?
 
 echo " starting the ${component} service "
 systemctl enable nginx &>> $logfile
-systemctl start nginx &>> $logfile
+systemctl restart nginx &>> $logfile
 stat $?
