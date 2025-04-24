@@ -6,36 +6,40 @@ if [ $ID -ne 0 ] ; then
  echo -e "\e[31m this script is only execurted by only previlaged user \e[0m"
  exit 1
 fi 
-echo " install nginx : "
-
-yum install nginx -y &>> "/tmp/${component}.log"
-
-if [ $? -eq 0 ] ; then
+stat() {
+if [ $1 -eq 0 ] ; then
  echo -e " \e[31m success \e[0m"
 else
  echo -e "\e[31m failure \e[0m"
-fi  
+ exit 2
+fi
+}
+logfile="/tmp/${component}.log"
+
+echo " install nginx : "
+
+yum install nginx -y &>> logfile
+
+stat $? 
 
 echo "downoding the front end component"
 curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
 
-if [ $? -eq 0 ] ; then
- echo -e " \e[31m success \e[0m"
-else
- echo -e "\e[31m failure \e[0m"
-fi
+stat $?
 
-echo -n -e " \e[31m performing clean up \e[0m"
+echo -n -e "  performing clean up "
 
 cd /usr/share/nginx/html  
-rm -rf * &>> "/tmp/${component}.log"
+rm -rf * &>> logfile
+stat $?
 
-if [ $? -eq 0 ] ; then
- echo -e " \e[31m success \e[0m"
-else
- echo -e "\e[31m failure \e[0m"
-fi
-# unzip /tmp/frontend.zip
+echo -n " extracting ${component} component : "
+unzip /tmp/${component}.zip &>> logfile
+mv static/* . &>> logfile
+rm -rf ${component}-main README.md
+mv localhost.conf /etc/nginx/default.d/roboshop.conf
+stat $?
+
 # mv frontend-main/* .
 # mv static/* .
 # rm -rf frontend-main README.md
