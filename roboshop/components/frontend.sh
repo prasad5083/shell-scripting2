@@ -40,6 +40,10 @@ mv static/* .
 rm -rf ${component}-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
+echo " starting the ${component} companent "
+systemctl enable nginx
+systemctl start nginx
+stat $?
 
 # mv frontend-main/* .
 # mv static/* .
