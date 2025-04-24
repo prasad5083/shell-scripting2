@@ -48,6 +48,5 @@ stat $?
 
 echo " starting the ${component} service "
 systemctl enable nginx &>> $logfile
-systemctl restart nginx &>> $logfile
 systemctl start nginx &>> $logfile
 stat $?
